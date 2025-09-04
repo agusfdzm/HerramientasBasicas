@@ -1,6 +1,7 @@
 import string
 import random
 import sys
+import pyperclip
 
 try:
     length = int(input("Enter the password length. Between 8 and 20 characters. "))
@@ -25,5 +26,23 @@ if option == 1:
     passwd = "".join(random.choice(allChars) for i in range(length))
 elif option == 2:
     passwd = "".join(random.choice(noSymbols) for i in range(length))
+elif option == 3:
+    exit()
+else:
+    while option not in (1,2, 3):
+        option = int(input("""Modes:\n
+1. Full
+2. Without symbols
+3. Exit\n
+Select: """))
+        
+        if option == 1:
+            passwd = "".join(random.choice(allChars) for i in range(length))
+        elif option == 2:
+            passwd = "".join(random.choice(noSymbols) for i in range(length))
+        elif option == 3:
+            exit()
 
 print(passwd)
+pyperclip.copy(passwd)
+print("Contraseña copiada al portapapeles.")
